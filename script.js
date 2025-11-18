@@ -50,7 +50,18 @@ const tools = [
   // use external NMAP_COMMANDS array
   commands: NMAP_COMMANDS
 },
-  {name:'Masscan', category:'Recon', description:'Very fast port scanner.', tags:['scan','network'], risk:'low', logo:'https://cdn.simpleicons.org/masscan', url:'https://github.com/robertdavidgraham/masscan', commands:['masscan -p1-65535 10.0.0.0/24 --rate=1000']},
+{
+  name: 'Masscan',
+  category: 'Recon',
+  description: 'Very fast, asynchronous port scanner capable of millions of packets per second.',
+  tags: ['scan','network','fast'],
+  risk: 'low',
+  logo: 'https://cdn.simpleicons.org/masscan',
+  url: 'https://github.com/robertdavidgraham/masscan',
+
+  // Connect the external 300-command Masscan file
+  commands: MASSCAN_COMMANDS
+},
   {name:'Rustscan', category:'Recon', description:'Fast port scanner built with Rust.', tags:['scan','rust'], risk:'low', logo:'https://cdn.simpleicons.org/rust', url:'https://github.com/RustScan/RustScan', commands:['rustscan -a target.com -- -A']},
   {name:'Amass', category:'Recon', description:'DNS enumeration and mapping.', tags:['dns','subdomain'], risk:'low', logo:'https://cdn.simpleicons.org/amass', url:'https://github.com/OWASP/Amass', commands:['amass enum -d target.com']},
   {name:'Subfinder', category:'Recon', description:'Passive subdomain enumeration.', tags:['subdomain','recon'], risk:'low', logo:'https://cdn.simpleicons.org/projectdiscovery', url:'https://github.com/projectdiscovery/subfinder', commands:['subfinder -d target.com']},
