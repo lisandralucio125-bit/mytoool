@@ -11,58 +11,187 @@ const CATEGORIES = [
 // ===========================
 const tools = [ /* ⚠️ YOUR FULL TOOLS ARRAY HERE — OLD FORMAT OK */ ];
 {
+{
   name: "Nmap",
   category: "Recon",
   description: "Network discovery and port scanning.",
-  tags: ["scan","network","enumeration"],
+  tags: ["scan", "network"],
   risk: "low",
   logo: "https://cdn.simpleicons.org/nmap",
   url: "https://nmap.org",
 
   commands: [
-    { cmd:"nmap -sC -sV target.com", desc:"Default scripts + version detection", when:"Initial recon", why:"Quick passive info" },
 
-    { cmd:"nmap -p- target.com", desc:"Scan ALL 65535 ports", when:"Hidden ports check", why:"Find uncommon open ports" },
+    {
+      cmd: "nmap -sC -sV target.com",
+      desc: "Default scripts + service version detection.",
+      when: "Initial scanning stage.",
+      why: "Gives quick overview of ports + services."
+    },
 
-    { cmd:"nmap -sV -p 22,80,443 target.com", desc:"Version scan with selected ports", when:"Focused testing", why:"Fast targeted scan" },
+    {
+      cmd: "nmap -sV --version-all target.com",
+      desc: "Aggressive version detection.",
+      when: "When you need exact software version.",
+      why: "Helps identify vulnerable versions."
+    },
 
-    { cmd:"nmap -A target.com", desc:"Aggressive Mode (OS detect + scripts + traceroute)", when:"Full fingerprinting", why:"Max recon from 1 command" },
+    {
+      cmd: "nmap -p- target.com",
+      desc: "Scan all 65535 TCP ports.",
+      when: "Full recon, bug bounty.",
+      why: "Find hidden services on uncommon ports."
+    },
 
-    { cmd:"nmap -O target.com", desc:"OS detection", when:"OS fingerprint required", why:"OS version determines exploit path" },
+    {
+      cmd: "nmap -p80,443,8080 target.com",
+      desc: "Scan specific ports manually.",
+      when: "Focused scanning of web ports.",
+      why: "Saves time vs full port scan."
+    },
 
-    { cmd:"nmap -sS target.com", desc:"Stealth SYN scan", when:"Avoid full connection logs", why:"Low-noise stealth scan" },
+    {
+      cmd: "nmap -sS target.com",
+      desc: "Stealth SYN scan.",
+      when: "Pentesting without full connection.",
+      why: "Harder to detect by firewalls."
+    },
 
-    { cmd:"nmap -Pn target.com", desc:"No ping, directly scan", when:"Host blocking ICMP", why:"Bypass firewall ping drop" },
+    {
+      cmd: "nmap -sT target.com",
+      desc: "Full TCP connect scan.",
+      when: "When SYN scan is blocked.",
+      why: "Reliable alternative to stealth scanning."
+    },
 
-    { cmd:"nmap -sU target.com", desc:"UDP scan", when:"DNS, SNMP, SIP checks", why:"UDP often ignored → hidden services" },
+    {
+      cmd: "nmap -sU target.com",
+      desc: "UDP port scanning.",
+      when: "Services like DNS, SNMP, NTP.",
+      why: "UDP ports often overlooked in scans."
+    },
 
-    { cmd:"nmap --script vuln target.com", desc:"Run vulnerability detection scripts", when:"Quick vuln discovery", why:"Detect CVEs automatically" },
+    {
+      cmd: "nmap -sC -sV -p- target.com",
+      desc: "Full ports + default scripts + version detection.",
+      when: "Deep recon.",
+      why: "Gives maximum visibility into the system."
+    },
 
-    { cmd:"nmap --script http-enum target.com", desc:"HTTP directory enumeration", when:"Web recon", why:"Find hidden endpoints" },
+    {
+      cmd: "nmap -A target.com",
+      desc: "OS detection + script scan + traceroute.",
+      when: "Aggressive scan allowed.",
+      why: "Best mode when you want everything in one scan."
+    },
 
-    { cmd:"nmap --script ssl-enum-ciphers -p 443 target.com", desc:"SSL/TLS cipher enumeration", when:"SSL audit", why:"Check weak TLS versions" },
+    {
+      cmd: "nmap -O target.com",
+      desc: "Identify operating system.",
+      when: "Fingerprinting hosts.",
+      why: "OS-specific exploits require OS info."
+    },
 
-    { cmd:"nmap -sC --script-updatedb", desc:"Update NSE script DB", when:"Before major scans", why:"Run latest vuln scripts" },
+    {
+      cmd: "nmap --traceroute target.com",
+      desc: "Run traceroute during scan.",
+      when: "Network path mapping.",
+      why: "Helps find intermediate network nodes."
+    },
 
-    { cmd:"nmap -T4 target.com", desc:"Aggressive timing", when:"Fast scan", why:"Good for LAN, not stealthy" },
+    {
+      cmd: "nmap --script vuln target.com",
+      desc: "Run vulnerability detection scripts.",
+      when: "Finding CVEs quickly.",
+      why: "Automated vuln identification."
+    },
 
-    { cmd:"nmap -T1 target.com", desc:"Paranoid timing", when:"Stealth requirement", why:"Avoid detection by IDS/IPS" },
+    {
+      cmd: "nmap --script http-title target.com",
+      desc: "Get website titles.",
+      when: "Quick web enumeration.",
+      why: "Useful for asset discovery."
+    },
 
-    { cmd:"nmap --top-ports 100 target.com", desc:"Scan top 100 ports", when:"Fast quick scan", why:"Best performance-to-info ratio" },
+    {
+      cmd: "nmap --script dns-brute target.com",
+      desc: "Brute force subdomains.",
+      when: "Subdomain enumeration.",
+      why: "Helps discover subdomains without separate tools."
+    },
 
-    { cmd:"nmap --reason target.com", desc:"Show WHY ports are marked open/closed", when:"Debugging scan results", why:"Deep understanding" },
+    {
+      cmd: "nmap -sn 10.0.0.0/24",
+      desc: "Ping scan, host discovery only (no ports).",
+      when: "Finding alive hosts.",
+      why: "Fastest way to map a network."
+    },
 
-    { cmd:"nmap -vvv target.com", desc:"Very verbose output", when:"Detailed debugging", why:"Transparent scan info" },
+    {
+      cmd: "nmap -Pn target.com",
+      desc: "Disable host discovery (treat all hosts as alive).",
+      when: "Firewall blocks ping.",
+      why: "Scan hosts even when ICMP disabled."
+    },
 
-    { cmd:"nmap -oN output.txt target.com", desc:"Output results to file (normal)", when:"Reporting / saving", why:"Useful for audit logs" },
+    {
+      cmd: "nmap -T4 target.com",
+      desc: "Faster timing scan.",
+      when: "You want faster results.",
+      why: "Good balance of speed + accuracy."
+    },
 
-    { cmd:"nmap -oX output.xml target.com", desc:"XML output", when:"Use with XML parsers", why:"Automation + tools integration" },
+    {
+      cmd: "nmap -T5 target.com",
+      desc: "Insane speed mode.",
+      when: "Bug bounty / massive network.",
+      why: "Fastest but risky—might cause detection."
+    },
 
-    { cmd:"nmap --traceroute target.com", desc:"Traceroute along with scan", when:"Network mapping", why:"Identify routing paths" },
+    {
+      cmd: "nmap -oN result.txt target.com",
+      desc: "Save output to text file.",
+      when: "Pentest reporting.",
+      why: "Keeps results for later analysis."
+    },
 
-    { cmd:"nmap -sn 10.0.0.0/24", desc:"Ping sweep (host discovery)", when:"Network mapping", why:"Find all live hosts" }
+    {
+      cmd: "nmap -oX result.xml target.com",
+      desc: "Save output as XML.",
+      when: "Automation or reporting tools.",
+      why: "XML integrates well with tools like Nessus/Burp."
+    },
+
+    {
+      cmd: "nmap -oG result.gnmap target.com",
+      desc: "Grepable output format.",
+      when: "Script automation.",
+      why: "Easy to parse with grep/awk/sed."
+    },
+
+    {
+      cmd: "nmap -sW target.com",
+      desc: "TCP window scan.",
+      when: "Firewall evasion.",
+      why: "Alternate stealth scan technique."
+    },
+
+    {
+      cmd: "nmap -f target.com",
+      desc: "Fragment scan packets.",
+      when: "Trying to bypass packet filters.",
+      why: "Sometimes helps evade simple firewalls."
+    },
+
+    {
+      cmd: "nmap --source-port 53 target.com",
+      desc: "Spoof source port.",
+      when: "Evasion attempts.",
+      why: "Some firewalls trust traffic on port 53 (DNS)."
+    }
+
   ]
-},
+}
 
 
 
