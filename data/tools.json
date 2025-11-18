@@ -1,0 +1,81 @@
+[
+  {"name":"Nmap","category":"Recon","description":"Network discovery and port scanning.","tags":["scan","network"],"risk":"low","logo":"logos/nmap.png"},
+  {"name":"Masscan","category":"Recon","description":"Very fast port scanner.","tags":["scan","network"],"risk":"low","logo":"logos/masscan.png"},
+  {"name":"Rustscan","category":"Recon","description":"Fast Rust-based port scanner.","tags":["scan","rust"],"risk":"low","logo":"logos/rustscan.png"},
+  {"name":"Amass","category":"Recon","description":"DNS enumeration & asset discovery.","tags":["subdomain","dns"],"risk":"low","logo":"logos/amass.png"},
+  {"name":"Subfinder","category":"Recon","description":"Passive subdomain enumeration.","tags":["subdomain"],"risk":"low","logo":"logos/subfinder.png"},
+  {"name":"Assetfinder","category":"Recon","description":"Find related domains & assets.","tags":["domains"],"risk":"low","logo":"logos/assetfinder.png"},
+  {"name":"WhatWeb","category":"Recon","description":"Identify web technologies.","tags":["fingerprint"],"risk":"low","logo":"logos/whatweb.png"},
+  {"name":"Wappalyzer","category":"Recon","description":"Web technology fingerprinting.","tags":["fingerprint"],"risk":"low","logo":"logos/wappalyzer.png"},
+  {"name":"httprobe","category":"Recon","description":"Probe active HTTP services.","tags":["probe"],"risk":"low","logo":"logos/httprobe.png"},
+  {"name":"gau","category":"Recon","description":"Collect URLs from multiple sources.","tags":["urls"],"risk":"low","logo":"logos/gau.png"},
+
+  {"name":"theHarvester","category":"OSINT","description":"Email, hostname & data collection.","tags":["osint"],"risk":"low","logo":"logos/theharvester.png"},
+  {"name":"Maltego","category":"OSINT","description":"Graph-based link analysis.","tags":["graph"],"risk":"low","logo":"logos/maltego.png"},
+  {"name":"SpiderFoot","category":"OSINT","description":"Automated OSINT collection.","tags":["osint"],"risk":"low","logo":"logos/spiderfoot.png"},
+  {"name":"Shodan","category":"OSINT","description":"Search engine for exposed devices.","tags":["iot"],"risk":"low","logo":"logos/shodan.png"},
+  {"name":"Censys","category":"OSINT","description":"Search internet-facing assets.","tags":["cert"],"risk":"low","logo":"logos/censys.png"},
+  {"name":"Recon-ng","category":"OSINT","description":"Modular OSINT framework.","tags":["framework"],"risk":"low","logo":"logos/recon-ng.png"},
+
+  {"name":"Nessus","category":"Vulnerability","description":"Enterprise vulnerability scanner.","tags":["scanner"],"risk":"medium","logo":"logos/nessus.png"},
+  {"name":"OpenVAS","category":"Vulnerability","description":"Open-source vulnerability scanner.","tags":["scanner"],"risk":"medium","logo":"logos/openvas.png"},
+  {"name":"Nuclei","category":"Vulnerability","description":"Template-based fast scanner.","tags":["templates"],"risk":"medium","logo":"logos/nuclei.png"},
+
+  {"name":"Burp Suite","category":"Web App","description":"Web security testing platform.","tags":["proxy"],"risk":"medium","logo":"logos/burpsuite.png"},
+  {"name":"OWASP ZAP","category":"Web App","description":"Web scanner & proxy.","tags":["proxy"],"risk":"medium","logo":"logos/zap.png"},
+  {"name":"Nikto","category":"Web App","description":"Web server scanner.","tags":["scanner"],"risk":"medium","logo":"logos/nikto.png"},
+  {"name":"Sqlmap","category":"Web App","description":"Automated SQL injection tool.","tags":["sql"],"risk":"high","logo":"logos/sqlmap.png"},
+  {"name":"Dirsearch","category":"Web App","description":"Directory & file scanner.","tags":["fuzz"],"risk":"medium","logo":"logos/dirsearch.png"},
+  {"name":"Gobuster","category":"Web App","description":"Directory brute forcing.","tags":["fuzz"],"risk":"medium","logo":"logos/gobuster.png"},
+  {"name":"FFUF","category":"Web App","description":"Fast web fuzzer.","tags":["fuzz"],"risk":"medium","logo":"logos/ffuf.png"},
+
+  {"name":"Metasploit","category":"Red Team","description":"Exploit & post-exploit framework.","tags":["exploit"],"risk":"high","logo":"logos/metasploit.png"},
+  {"name":"Cobalt Strike","category":"Red Team","description":"Threat emulation platform.","tags":["c2"],"risk":"high","logo":"logos/cobaltstrike.png"},
+  {"name":"Sliver","category":"Red Team","description":"Open-source C2.","tags":["c2"],"risk":"high","logo":"logos/sliver.png"},
+  {"name":"Empire","category":"Red Team","description":"Post-exploitation framework.","tags":["post-exploit"],"risk":"high","logo":"logos/empire.png"},
+  {"name":"CrackMapExec","category":"Red Team","description":"AD post-exploitation toolkit.","tags":["lateral"],"risk":"high","logo":"logos/cme.png"},
+  {"name":"BloodHound","category":"Red Team","description":"AD attack path analysis.","tags":["ad"],"risk":"high","logo":"logos/bloodhound.png"},
+
+  {"name":"Aircrack-ng","category":"Wireless","description":"WiFi cracking suite.","tags":["wifi"],"risk":"high","logo":"logos/aircrack.png"},
+  {"name":"Reaver","category":"Wireless","description":"WPS brute forcing.","tags":["wps"],"risk":"high","logo":"logos/reaver.png"},
+  {"name":"Kismet","category":"Wireless","description":"Wireless detector/sniffer.","tags":["wifi"],"risk":"low","logo":"logos/kismet.png"},
+
+  {"name":"Hashcat","category":"Passwords","description":"GPU password cracker.","tags":["crack"],"risk":"high","logo":"logos/hashcat.png"},
+  {"name":"John the Ripper","category":"Passwords","description":"Password cracking suite.","tags":["crack"],"risk":"high","logo":"logos/john.png"},
+  {"name":"Hydra","category":"Passwords","description":"Network brute force tool.","tags":["brute"],"risk":"high","logo":"logos/hydra.png"},
+
+  {"name":"ScoutSuite","category":"Cloud","description":"Multi-cloud auditing.","tags":["audit"],"risk":"medium","logo":"logos/scoutsuite.png"},
+  {"name":"Prowler","category":"Cloud","description":"AWS security assessment.","tags":["aws"],"risk":"medium","logo":"logos/prowler.png"},
+  {"name":"Pacu","category":"Cloud","description":"AWS exploitation toolkit.","tags":["aws"],"risk":"high","logo":"logos/pacu.png"},
+
+  {"name":"MobSF","category":"Mobile","description":"Mobile security framework.","tags":["mobile"],"risk":"medium","logo":"logos/mobsf.png"},
+  {"name":"Frida","category":"Mobile","description":"Dynamic instrumentation.","tags":["dynamic"],"risk":"high","logo":"logos/frida.png"},
+  {"name":"apktool","category":"Mobile","description":"Decompile & recompile APKs.","tags":["reverse"],"risk":"medium","logo":"logos/apktool.png"},
+
+  {"name":"Ghidra","category":"Reverse","description":"Reverse engineering suite.","tags":["decompile"],"risk":"medium","logo":"logos/ghidra.png"},
+  {"name":"Radare2","category":"Reverse","description":"Reverse engineering framework.","tags":["analysis"],"risk":"medium","logo":"logos/radare2.png"},
+  {"name":"IDA","category":"Reverse","description":"Interactive Disassembler.","tags":["disasm"],"risk":"medium","logo":"logos/ida.png"},
+
+  {"name":"Autopsy","category":"DFIR","description":"Digital forensics platform.","tags":["forensics"],"risk":"low","logo":"logos/autopsy.png"},
+  {"name":"Volatility","category":"DFIR","description":"Memory forensics framework.","tags":["memory"],"risk":"medium","logo":"logos/volatility.png"},
+  {"name":"Velociraptor","category":"DFIR","description":"Endpoint forensics & monitoring.","tags":["dfir"],"risk":"medium","logo":"logos/velociraptor.png"},
+
+  {"name":"Cuckoo Sandbox","category":"Malware","description":"Automated malware analysis.","tags":["sandbox"],"risk":"high","logo":"logos/cuckoo.png"},
+  {"name":"YARA","category":"Malware","description":"Pattern-based malware detection.","tags":["rules"],"risk":"low","logo":"logos/yara.png"},
+  {"name":"Any.Run","category":"Malware","description":"Interactive malware sandbox.","tags":["sandbox"],"risk":"high","logo":"logos/anyrun.png"},
+
+  {"name":"Wireshark","category":"Network","description":"Network protocol analyzer.","tags":["capture"],"risk":"low","logo":"logos/wireshark.png"},
+  {"name":"Tcpdump","category":"Network","description":"CLI packet capture.","tags":["capture"],"risk":"low","logo":"logos/tcpdump.png"},
+  {"name":"Ettercap","category":"Network","description":"MITM attack framework.","tags":["mitm"],"risk":"high","logo":"logos/ettercap.png"},
+  {"name":"Snort","category":"Network","description":"Network IDS.","tags":["ids"],"risk":"low","logo":"logos/snort.png"},
+  {"name":"Suricata","category":"Network","description":"High-performance IDS/IPS.","tags":["ids"],"risk":"low","logo":"logos/suricata.png"},
+
+  {"name":"GRASSMARLIN","category":"ICS","description":"ICS/SCADA environment mapping.","tags":["ics"],"risk":"high","logo":"logos/grassmarlin.png"},
+  {"name":"Kali-ICS","category":"ICS","description":"ICS pen-testing toolkit.","tags":["ics"],"risk":"medium","logo":"logos/kali-ics.png"},
+
+  {"name":"MISP","category":"TI","description":"Threat intelligence sharing platform.","tags":["ti"],"risk":"low","logo":"logos/misp.png"},
+  {"name":"OpenCTI","category":"TI","description":"Cyber threat intelligence platform.","tags":["ti"],"risk":"low","logo":"logos/opencti.png"},
+
+  {"name":"VSCode","category":"Tools","description":"Code editor.","tags":["editor"],"risk":"low","logo":"logos/vscode.png"},
+  {"name":"Docker","category":"Tools","description":"Container runtime.","tags":["container"],"risk":"low","logo":"logos/docker.png"}
+]
