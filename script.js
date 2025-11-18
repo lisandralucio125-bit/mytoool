@@ -74,7 +74,7 @@ const tools = [
   // Connect the external 300-command Rustscan file
   commands: RUSTSCAN_COMMANDS
 },
-{
+
   {name:'Amass', category:'Recon', description:'DNS enumeration and mapping.', tags:['dns','subdomain'], risk:'low', logo:'https://cdn.simpleicons.org/amass', url:'https://github.com/OWASP/Amass', commands:['amass enum -d target.com']},
   {name:'Subfinder', category:'Recon', description:'Passive subdomain enumeration.', tags:['subdomain','recon'], risk:'low', logo:'https://cdn.simpleicons.org/projectdiscovery', url:'https://github.com/projectdiscovery/subfinder', commands:['subfinder -d target.com']},
   {name:'Assetfinder', category:'Recon', description:'Find domains and subdomains from a root domain.', tags:['recon','domains'], risk:'low', logo:'https://cdn.simpleicons.org/assetfinder', url:'https://github.com/tomnomnom/assetfinder', commands:['assetfinder target.com']},
