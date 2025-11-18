@@ -5,12 +5,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sachidax Notebook — Cybersecurity Tools</title>
   <meta name="description" content="Sachidax Notebook — single-file cyber tool notebook with commands, copy, preview, export" />
-  <!-- Keep Tailwind CDN exactly as before per your confirmation -->
+
+  <!-- Tailwind (unchanged) -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
   <!-- External stylesheet -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Load ALL commands FIRST (important) -->
+  <script src="nmap-commands.js"></script>
+
+  <!-- Load main logic AFTER commands -->
+  <script src="script.js" defer></script>
+
 </head>
+
 <body class="min-h-screen p-6">
   <div class="max-w-[1400px] mx-auto">
     <header class="flex items-center justify-between mb-4">
@@ -24,7 +36,8 @@
       <div class="flex items-center gap-3">
         <button id="exportJsonBtn" class="px-4 py-2 btn-ghost rounded-md text-sm">Export JSON</button>
         <button id="downloadHtmlBtn" class="px-4 py-2 btn-primary rounded-md text-sm">Download .html</button>
-        <!-- Add Tool button (small +) - non-intrusive -->
+
+        <!-- Add Tool button -->
         <button id="addToolBtn" title="Add Tool" class="px-3 py-2 btn-accent rounded-md text-sm">＋ Add Tool</button>
       </div>
     </header>
@@ -35,10 +48,12 @@
     </div>
 
     <main class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
       <!-- Sidebar -->
       <aside class="md:col-span-1 glass p-3 rounded-2xl max-h-[70vh] overflow-hidden flex flex-col">
         <div class="flex items-center gap-2 mb-3">
-          <input id="searchInput" type="search" placeholder="Search tools, tags, commands..." class="w-full px-3 py-2 rounded-md bg-transparent border border-slate-700 placeholder:text-slate-500 text-sm" />
+          <input id="searchInput" type="search" placeholder="Search tools, tags, commands..." 
+                 class="w-full px-3 py-2 rounded-md bg-transparent border border-slate-700 placeholder:text-slate-500 text-sm" />
           <button id="clearSearch" title="Clear" class="px-2 py-2 rounded-md btn-ghost">✕</button>
         </div>
         <div id="toolList" class="overflow-auto divide-y divide-slate-800"></div>
@@ -50,7 +65,9 @@
           <div class="flex items-start justify-between">
             <div>
               <h2 id="toolTitle" class="text-2xl font-semibold">Select a tool</h2>
-              <p id="toolMeta" class="text-sm text-slate-400 mt-1">Choose a tool from the left to view commands and details</p>
+              <p id="toolMeta" class="text-sm text-slate-400 mt-1">
+                Choose a tool from the left to view commands and details
+              </p>
             </div>
             <div class="flex items-center gap-2">
               <button id="copyAllBtn" class="px-3 py-2 rounded-md btn-ghost text-sm">Copy All</button>
@@ -81,17 +98,20 @@
               <summary class="font-medium">Developer JSON (toggle)</summary>
               <pre id="jsonView" class="mt-2 text-xs overflow-auto max-h-48 bg-transparent"></pre>
             </details>
+
           </div>
         </div>
       </section>
+
     </main>
 
-    <footer class="mt-4 text-sm text-slate-500">Built with ❤️ — Edit the <code class="text-xs">tools</code> array in <code class="text-xs">script.js</code> to modify defaults.</footer>
+    <footer class="mt-4 text-sm text-slate-500">
+      Built with ❤️ — Edit the <code class="text-xs">tools</code> array in 
+      <code class="text-xs">script.js</code> to modify defaults.
+    </footer>
   </div>
 
   <div id="modalRoot"></div>
 
-  <!-- External script -->
-  <script src="script.js"></script>
 </body>
 </html>
