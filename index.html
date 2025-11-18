@@ -5,31 +5,38 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sachidax Notebook — Cybersecurity Tools</title>
   <meta name="description" content="Sachidax Notebook — single-file cyber tool notebook with commands, copy, preview, export JSON" />
-  <!-- Tailwind CDN (keeps your original styling) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-black text-slate-200">
-  <div class="max-w-[1400px] mx-auto p-4">
+
+<body class="min-h-screen p-6">
+  <div class="max-w-[1400px] mx-auto">
+
     <header class="flex items-center justify-between mb-4">
       <div class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-gradient-to-br from-purple-700 to-indigo-600 text-white text-xl font-bold shadow-lg">Sx</div>
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-700 to-indigo-600 flex items-center justify-center text-white text-xl font-bold">Sx</div>
         <div>
           <h1 class="text-2xl font-semibold">Sachidax Notebook</h1>
-          <p class="text-sm text-slate-400">Cybersecurity tool library — commands, copy, preview, export</p>
+          <p class="text-sm text-slate-400">130+ cybersecurity tools — category tabs, search, commands, export</p>
         </div>
       </div>
       <div class="flex items-center gap-3">
-        <button id="exportJsonBtn" class="px-4 py-2 bg-transparent border border-slate-700 rounded-md text-sm hover:bg-slate-800">Export JSON</button>
+        <button id="exportJsonBtn" class="px-4 py-2 bg-transparent border border-slate-700 rounded-md text-sm">Export JSON</button>
         <button id="downloadHtmlBtn" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-md text-sm">Download .html</button>
-        <button id="addToolBtn" class="px-4 py-2 bg-transparent border border-purple-600 text-purple-300 rounded-md">Add Tool</button>
       </div>
     </header>
 
+    <!-- Tabs -->
+    <div class="glass p-3 rounded-lg mb-4 tabs">
+      <div class="flex gap-2 overflow-auto" id="categoryTabs"></div>
+    </div>
+
     <main class="grid grid-cols-1 md:grid-cols-4 gap-4">
       <!-- Sidebar -->
-      <aside class="md:col-span-1 glass p-3 rounded-2xl max-h-[75vh] overflow-hidden flex flex-col">
+      <aside class="md:col-span-1 glass p-3 rounded-2xl max-h-[70vh] overflow-hidden flex flex-col">
         <div class="flex items-center gap-2 mb-3">
           <input id="searchInput" type="search" placeholder="Search tools, tags, commands..." class="w-full px-3 py-2 rounded-md bg-transparent border border-slate-700 placeholder:text-slate-500 text-sm" />
           <button id="clearSearch" title="Clear" class="px-2 py-2 rounded-md bg-slate-800 border border-slate-700">✕</button>
@@ -38,7 +45,7 @@
       </aside>
 
       <!-- Details Pane -->
-      <section class="md:col-span-3 glass p-4 rounded-2xl max-h-[75vh] overflow-auto neon">
+      <section class="md:col-span-3 glass p-4 rounded-2xl max-h-[70vh] overflow-auto">
         <div id="detailArea">
           <div class="flex items-start justify-between">
             <div>
@@ -47,22 +54,17 @@
             </div>
             <div class="flex items-center gap-2">
               <button id="copyAllBtn" class="px-3 py-2 rounded-md bg-slate-800 border border-slate-700 text-sm">Copy All</button>
-              <select id="riskFilter" class="px-2 py-2 bg-transparent border border-slate-700 rounded-md text-sm">
-                <option value="">All risks</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-              </select>
             </div>
           </div>
 
           <div id="toolContent" class="mt-4">
             <div id="toolHeader" class="flex gap-4 items-center">
-              <div id="toolLogo" class="w-20 h-20 rounded-xl bg-slate-800 flex items-center justify-center">🔧</div>
+              <div id="toolLogo" class="icon">🔧</div>
               <div>
                 <div id="toolCategory" class="text-sm text-slate-400">Category</div>
                 <div id="toolDesc" class="mt-2 text-slate-300"></div>
                 <div id="toolTags" class="mt-3 flex gap-2 flex-wrap"></div>
+                <div id="toolUrl" class="mt-2 text-xs text-slate-500"></div>
               </div>
             </div>
 
@@ -84,12 +86,13 @@
       </section>
     </main>
 
-    <footer class="mt-4 text-sm text-slate-500">Built with ❤️ — Edit the <code class="text-xs">tools</code> array in <code class="text-xs">app.js</code> to add or modify tools.</footer>
+    <footer class="mt-4 text-sm text-slate-500">Built with ❤️ — Edit the <code class="text-xs">tools</code> array at the bottom to add or modify tools.</footer>
   </div>
 
-  <!-- Modals -->
   <div id="modalRoot"></div>
 
-  <script src="app.js"></script>
+  <!-- External JS -->
+  <script src="script.js"></script>
+
 </body>
 </html>
