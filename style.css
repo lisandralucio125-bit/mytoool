@@ -1,5 +1,100 @@
-body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#0f172a,#020617);color:#e6eef8}
-.glass{background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.04)}
-.code-box{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;white-space:pre-wrap}
-.icon{width:48px;height:48px;border-radius:8px;background:#0b1220;display:flex;align-items:center;justify-content:center}
-.tabs button{padding:.45rem .8rem;border-radius:8px}
+:root{
+  --bg-1: #07060a;
+  --bg-2: #0f1116;
+  --muted: #9fb0c8;
+  --glass-1: rgba(255,255,255,0.02);
+  --glass-2: rgba(255,255,255,0.01);
+  --border: rgba(255,255,255,0.04);
+}
+
+/* Base */
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #05050a 0%, #08080d 100%);
+  color: #e6eef8;
+}
+
+/* Glass card */
+.glass{
+  background: linear-gradient(135deg, var(--glass-1), var(--glass-2));
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+/* Brand gradient (rainbow accent) */
+.brand-gradient{
+  background: linear-gradient(135deg, #9b5cff, #5fb0ff 25%, #6fffb0 50%, #ffb86b 75%, #ff6b9b 100%);
+  box-shadow: 0 6px 14px rgba(95,176,255,0.08), inset 0 -6px 30px rgba(0,0,0,0.35);
+}
+
+/* Buttons */
+.btn-ghost{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+}
+.btn-action{
+  background: linear-gradient(90deg, rgba(123,58,237,0.18), rgba(59,130,246,0.12));
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+/* Icon box */
+.icon{
+  width:56px;height:56px;border-radius:10px;background:#0b0b0f;display:flex;align-items:center;justify-content:center;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+}
+
+/* Tool list item */
+#toolList > div{
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+#toolList > div:hover{
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+/* Gradient stripe on hover (subtle rainbow) */
+.tabs button:hover{
+  background-image: linear-gradient(90deg, rgba(155,92,255,0.06), rgba(95,176,255,0.04));
+}
+
+/* Tooltip (category hover) */
+.category-tooltip{
+  position:absolute;
+  top: 3.0rem;
+  left: 0;
+  z-index: 60;
+  width: 18rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(10,10,14,0.95), rgba(6,6,8,0.95));
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  color: var(--muted);
+  font-size: 0.85rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .15s ease, transform .15s ease;
+  pointer-events: none;
+}
+
+/* When shown */
+.tabs button.show-tip .category-tooltip{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* small code-box style to match */
+.code-box{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; white-space: pre-wrap; color:#9fd3ff; font-size:0.92rem; }
+
+/* small responsive tweaks */
+@media (max-width: 768px){
+  .category-tooltip{ left: 0; width: 14rem; }
+}
