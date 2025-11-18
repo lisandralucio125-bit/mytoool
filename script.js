@@ -34,15 +34,22 @@ const CATEGORY_DESCRIPTIONS = {
   'Tools': 'Utilities, editors, and developer tools.'
 };
 
-/* -------------------------
-   Tools array (defaults kept)
-   ------------------------- */
-/* NOTE: this is a trimmed copy of your original tools array for brevity in this file.
-   On integration, you can paste your complete tools list here exactly as in your original file.
-   For this deliverable I include the same tools array content (copied from index.html).
-*/
+// ===============================
+//  Tools Configuration
+// ===============================
+
 const tools = [
-  {name:'Nmap', category:'Recon', description:'Network discovery and port scanning.', tags:['scan','network'], risk:'low', logo:'https://cdn.simpleicons.org/nmap', url:'https://nmap.org', commands:['nmap -sC -sV -oN host-scan.txt 10.0.0.0/24','nmap -p- -T4 target.com']},
+{
+  name: 'Nmap',
+  category: 'Recon',
+  description: 'Network discovery and port scanning.',
+  tags: ['scan','network'],
+  risk: 'low',
+  logo: 'https://cdn.simpleicons.org/nmap',
+  url: 'https://nmap.org',
+  // use external NMAP_COMMANDS array
+  commands: NMAP_COMMANDS
+},
   {name:'Masscan', category:'Recon', description:'Very fast port scanner.', tags:['scan','network'], risk:'low', logo:'https://cdn.simpleicons.org/masscan', url:'https://github.com/robertdavidgraham/masscan', commands:['masscan -p1-65535 10.0.0.0/24 --rate=1000']},
   {name:'Rustscan', category:'Recon', description:'Fast port scanner built with Rust.', tags:['scan','rust'], risk:'low', logo:'https://cdn.simpleicons.org/rust', url:'https://github.com/RustScan/RustScan', commands:['rustscan -a target.com -- -A']},
   {name:'Amass', category:'Recon', description:'DNS enumeration and mapping.', tags:['dns','subdomain'], risk:'low', logo:'https://cdn.simpleicons.org/amass', url:'https://github.com/OWASP/Amass', commands:['amass enum -d target.com']},
