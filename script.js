@@ -296,21 +296,47 @@ function selectTool(idx){
 /* render commands of a tool (uses original design) */
 function renderCommands(t){
   commandsArea.innerHTML = '';
-  (t.commands||[]).forEach((c)=>{
+
+  (t.commands || []).forEach(c => {
+
+    // Support both formats:
+    // "string" OR { cmd:"...", note:"..." }
+    const cmdText = typeof c === "string" ? c : c.cmd;
+    const noteText = typeof c === "string" ? "" : (c.note || "");
+
     const box = document.createElement('div');
-    box.className = 'p-3 bg-slate-900 rounded-md border border-slate-800 flex items-start justify-between gap-3';
+    box.className = "p-3 bg-slate-900 rounded-md border border-slate-800 flex flex-col gap-2";
+
     box.innerHTML = `
-      <div class="flex-1 code-box text-sm">${escapeHtml(c)}</div>
-      <div class="flex flex-col gap-2 ml-3">
-        <button class="copyBtn px-3 py-1 rounded-md text-xs btn-ghost">Copy</button>
-        <button class="previewBtn px-3 py-1 rounded-md text-xs btn-ghost">Preview</button>
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex-1 code-box text-sm">${escapeHtml(cmdText)}</div>
+        <div class="flex flex-col gap-2 ml-3">
+          <button class="copyBtn px-3 py-1 rounded-md text-xs btn-ghost">Copy</button>
+          <button class="previewBtn px-3 py-1 rounded-md text-xs btn-ghost">Preview</button>
+        </div>
       </div>
+
+      ${noteText 
+        ? `<div class="text-xs text-slate-400">${escapeHtml(noteText)}</div>` 
+        : ""
+      }
     `;
-    box.querySelector('.copyBtn').addEventListener('click', ()=>{ navigator.clipboard.writeText(c).then(()=>showToast('Copied to clipboard'))});
-    box.querySelector('.previewBtn').addEventListener('click', ()=> openTerminalPreview(c));
+
+    // Copy button
+    box.querySelector('.copyBtn').addEventListener('click', () => {
+      navigator.clipboard.writeText(cmdText)
+        .then(() => showToast("Copied to clipboard"));
+    });
+
+    // Preview button
+    box.querySelector('.previewBtn').addEventListener('click', () => {
+      openTerminalPreview(cmdText);
+    });
+
     commandsArea.appendChild(box);
   });
 }
+
 
 /* -------------------------
    Terminal preview modal (keeps original styling)
