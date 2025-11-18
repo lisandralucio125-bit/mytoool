@@ -10,6 +10,60 @@ const CATEGORIES = [
 // FULL TOOLS ARRAY (OLD FORMAT SUPPORTED)
 // ===========================
 const tools = [ /* ⚠️ YOUR FULL TOOLS ARRAY HERE — OLD FORMAT OK */ ];
+{
+  name: "Nmap",
+  category: "Recon",
+  description: "Network discovery and port scanning.",
+  tags: ["scan","network","enumeration"],
+  risk: "low",
+  logo: "https://cdn.simpleicons.org/nmap",
+  url: "https://nmap.org",
+
+  commands: [
+    { cmd:"nmap -sC -sV target.com", desc:"Default scripts + version detection", when:"Initial recon", why:"Quick passive info" },
+
+    { cmd:"nmap -p- target.com", desc:"Scan ALL 65535 ports", when:"Hidden ports check", why:"Find uncommon open ports" },
+
+    { cmd:"nmap -sV -p 22,80,443 target.com", desc:"Version scan with selected ports", when:"Focused testing", why:"Fast targeted scan" },
+
+    { cmd:"nmap -A target.com", desc:"Aggressive Mode (OS detect + scripts + traceroute)", when:"Full fingerprinting", why:"Max recon from 1 command" },
+
+    { cmd:"nmap -O target.com", desc:"OS detection", when:"OS fingerprint required", why:"OS version determines exploit path" },
+
+    { cmd:"nmap -sS target.com", desc:"Stealth SYN scan", when:"Avoid full connection logs", why:"Low-noise stealth scan" },
+
+    { cmd:"nmap -Pn target.com", desc:"No ping, directly scan", when:"Host blocking ICMP", why:"Bypass firewall ping drop" },
+
+    { cmd:"nmap -sU target.com", desc:"UDP scan", when:"DNS, SNMP, SIP checks", why:"UDP often ignored → hidden services" },
+
+    { cmd:"nmap --script vuln target.com", desc:"Run vulnerability detection scripts", when:"Quick vuln discovery", why:"Detect CVEs automatically" },
+
+    { cmd:"nmap --script http-enum target.com", desc:"HTTP directory enumeration", when:"Web recon", why:"Find hidden endpoints" },
+
+    { cmd:"nmap --script ssl-enum-ciphers -p 443 target.com", desc:"SSL/TLS cipher enumeration", when:"SSL audit", why:"Check weak TLS versions" },
+
+    { cmd:"nmap -sC --script-updatedb", desc:"Update NSE script DB", when:"Before major scans", why:"Run latest vuln scripts" },
+
+    { cmd:"nmap -T4 target.com", desc:"Aggressive timing", when:"Fast scan", why:"Good for LAN, not stealthy" },
+
+    { cmd:"nmap -T1 target.com", desc:"Paranoid timing", when:"Stealth requirement", why:"Avoid detection by IDS/IPS" },
+
+    { cmd:"nmap --top-ports 100 target.com", desc:"Scan top 100 ports", when:"Fast quick scan", why:"Best performance-to-info ratio" },
+
+    { cmd:"nmap --reason target.com", desc:"Show WHY ports are marked open/closed", when:"Debugging scan results", why:"Deep understanding" },
+
+    { cmd:"nmap -vvv target.com", desc:"Very verbose output", when:"Detailed debugging", why:"Transparent scan info" },
+
+    { cmd:"nmap -oN output.txt target.com", desc:"Output results to file (normal)", when:"Reporting / saving", why:"Useful for audit logs" },
+
+    { cmd:"nmap -oX output.xml target.com", desc:"XML output", when:"Use with XML parsers", why:"Automation + tools integration" },
+
+    { cmd:"nmap --traceroute target.com", desc:"Traceroute along with scan", when:"Network mapping", why:"Identify routing paths" },
+
+    { cmd:"nmap -sn 10.0.0.0/24", desc:"Ping sweep (host discovery)", when:"Network mapping", why:"Find all live hosts" }
+  ]
+},
+
 
 
 // ===========================
