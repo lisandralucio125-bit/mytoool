@@ -5,32 +5,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sachidax Notebook — Cybersecurity Tools</title>
   <meta name="description" content="Sachidax Notebook — single-file cyber tool notebook with commands, copy, preview, export JSON" />
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- External CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="min-h-screen p-6">
   <div class="max-w-[1400px] mx-auto">
-
     <header class="flex items-center justify-between mb-4">
       <div class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-700 to-indigo-600 flex items-center justify-center text-white text-xl font-bold">Sx</div>
+        <div id="brand" class="w-12 h-12 rounded-2xl brand-gradient flex items-center justify-center text-white text-xl font-bold">Sx</div>
         <div>
           <h1 class="text-2xl font-semibold">Sachidax Notebook</h1>
           <p class="text-sm text-slate-400">130+ cybersecurity tools — category tabs, search, commands, export</p>
         </div>
       </div>
-
       <div class="flex items-center gap-3">
-        <button id="exportJsonBtn" class="px-4 py-2 bg-transparent border border-slate-700 rounded-md text-sm">Export JSON</button>
-        <button id="downloadHtmlBtn" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-md text-sm">Download .html</button>
+        <button id="exportJsonBtn" class="px-4 py-2 btn-ghost text-sm">Export JSON</button>
+        <button id="downloadHtmlBtn" class="px-4 py-2 btn-action text-sm">Download .html</button>
       </div>
     </header>
 
@@ -44,7 +35,7 @@
       <aside class="md:col-span-1 glass p-3 rounded-2xl max-h-[70vh] overflow-hidden flex flex-col">
         <div class="flex items-center gap-2 mb-3">
           <input id="searchInput" type="search" placeholder="Search tools, tags, commands..." class="w-full px-3 py-2 rounded-md bg-transparent border border-slate-700 placeholder:text-slate-500 text-sm" />
-          <button id="clearSearch" title="Clear" class="px-2 py-2 rounded-md bg-slate-800 border border-slate-700">✕</button>
+          <button id="clearSearch" title="Clear" class="px-2 py-2 rounded-md btn-ghost">✕</button>
         </div>
         <div id="toolList" class="overflow-auto divide-y divide-slate-800"></div>
       </aside>
@@ -58,7 +49,7 @@
               <p id="toolMeta" class="text-sm text-slate-400 mt-1">Choose a tool from the left to view commands and details</p>
             </div>
             <div class="flex items-center gap-2">
-              <button id="copyAllBtn" class="px-3 py-2 rounded-md bg-slate-800 border border-slate-700 text-sm">Copy All</button>
+              <button id="copyAllBtn" class="px-3 py-2 rounded-md btn-ghost text-sm">Copy All</button>
             </div>
           </div>
 
@@ -91,13 +82,11 @@
       </section>
     </main>
 
-    <footer class="mt-4 text-sm text-slate-500">Built with ❤️ — Edit the <code class="text-xs">tools</code> array at the bottom to add or modify tools.</footer>
+    <footer class="mt-4 text-sm text-slate-500">Built with ❤️ — Edit the <code class="text-xs">data/</code> JSON files to add or modify tools.</footer>
   </div>
 
   <div id="modalRoot"></div>
 
-  <!-- Correct JS placement -->
-  <script src="script.js"></script>
-
+  <script src="app.js" defer></script>
 </body>
 </html>
