@@ -4,24 +4,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sachidax Notebook — Cybersecurity Tools</title>
-  <meta name="description" content="Sachidax Notebook — single-file cyber tool notebook with commands, copy, preview, export JSON" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Sachidax Notebook — single-file cyber tool notebook with commands, copy, preview, export" />
+  <!-- Keep Tailwind CDN exactly as before per your confirmation -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="min-h-screen p-6">
   <div class="max-w-[1400px] mx-auto">
     <header class="flex items-center justify-between mb-4">
       <div class="flex items-center gap-3">
-        <div id="brand" class="w-12 h-12 rounded-2xl brand-gradient flex items-center justify-center text-white text-xl font-bold">Sx</div>
+        <div id="brandLogo" class="w-12 h-12 rounded-2xl brand-gradient flex items-center justify-center text-white text-xl font-bold">Sx</div>
         <div>
-          <h1 class="text-2xl font-semibold">Sachidax Notebook</h1>
+          <h1 class="text-2xl font-semibold brand-gradient-text">Sachidax Notebook</h1>
           <p class="text-sm text-slate-400">130+ cybersecurity tools — category tabs, search, commands, export</p>
         </div>
       </div>
       <div class="flex items-center gap-3">
-        <button id="exportJsonBtn" class="px-4 py-2 btn-ghost text-sm">Export JSON</button>
-        <button id="downloadHtmlBtn" class="px-4 py-2 btn-action text-sm">Download .html</button>
+        <button id="exportJsonBtn" class="px-4 py-2 btn-ghost rounded-md text-sm">Export JSON</button>
+        <button id="downloadHtmlBtn" class="px-4 py-2 btn-primary rounded-md text-sm">Download .html</button>
+        <!-- Add Tool button (small +) - non-intrusive -->
+        <button id="addToolBtn" title="Add Tool" class="px-3 py-2 btn-accent rounded-md text-sm">＋ Add Tool</button>
       </div>
     </header>
 
@@ -82,11 +86,12 @@
       </section>
     </main>
 
-    <footer class="mt-4 text-sm text-slate-500">Built with ❤️ — Edit the <code class="text-xs">data/</code> JSON files to add or modify tools.</footer>
+    <footer class="mt-4 text-sm text-slate-500">Built with ❤️ — Edit the <code class="text-xs">tools</code> array in <code class="text-xs">script.js</code> to modify defaults.</footer>
   </div>
 
   <div id="modalRoot"></div>
 
-  <script src="app.js" defer></script>
+  <!-- External script -->
+  <script src="script.js"></script>
 </body>
 </html>
